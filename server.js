@@ -34,6 +34,7 @@ router.post('/', function(req, res) {
 	var action = data["result"]["action"]
 	if(action != null){
 		handleAction(action,req,res);
+		
 	}
 });
 
