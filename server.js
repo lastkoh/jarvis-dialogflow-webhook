@@ -58,12 +58,20 @@ function getRandomJoke(res){
 	request.get(options,function(error, response, body) { 
 		if (!error && response.statusCode == 200) {
 			var joke = JSON.parse(body)["joke"];
+			// var outputBody = {
+			// 	"speech": joke,
+			// 	"displayText": joke,
+			// 	"data": {},
+			// 	"contextOut": [],
+			// 	"source": options.url
+			// }
 			var outputBody = {
-				"speech": joke,
-				"displayText": joke,
-				"data": {},
-				"contextOut": [],
-				"source": options.url
+				"followupEvent":{
+					"name": "jokes",
+					"data": {
+						"random": joke
+					}
+				}
 			}
 			res.json(outputBody);
 		}			
